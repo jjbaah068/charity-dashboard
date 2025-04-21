@@ -1,0 +1,21 @@
+# Charity Dashboard in R 📊
+
+This is a portfolio project that uses R to analyze and visualize data for a charity organization.
+
+## 🚀 Features
+- Data loaded from CSVs
+- Clean visualizations with ggplot2
+- Insights into donations, events, volunteers, and beneficiaries
+
+## 📁 Files
+- `charity_dashboard.Rmd` – R Markdown file
+- `Donors.csv`, `Donations.csv`, etc. – Sample data files
+- `dashboard.html` – (optional) rendered dashboard
+
+## 📌 Tools Used
+- R
+- RStudio
+- dplyr, ggplot2, readr
+
+Made by [James Junior Baah](www.linkedin.com/in/james-kojo-junior-baah-881361336)
+
