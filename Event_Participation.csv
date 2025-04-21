@@ -1,0 +1,6 @@
+participation_id,event_id,volunteer_id,role
+1,1,3,Coordinator
+2,1,2,Logistics
+3,2,1,Volunteer
+4,3,4,Speaker
+5,2,3,Organizer

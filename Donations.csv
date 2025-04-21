@@ -1,0 +1,7 @@
+donation_id,donor_id,donation_date,amount,donation_type,notes
+1,1,2024-01-15,500,Cash,General donation
+2,2,2024-02-10,1500,Cash,General donation
+3,3,2024-03-22,2000,Cash & Items ,Cash and Other Items
+4,4,2024-04-01,200,Clothing,Children’s clothes
+5,5,2024-04-10,50,Books,Education Supplies
+6,6,2024-05-11,300,Cash,General donation

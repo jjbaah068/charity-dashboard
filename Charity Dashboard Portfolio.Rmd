@@ -1,0 +1,89 @@
+---
+title: "Charity Organization Dashboard"
+author: "James Junior Baah"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    theme: readable
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+library(dplyr)
+library(ggplot2)
+```
+
+## 📥 Load Data
+
+```{r load-data}
+donors <- read_csv("Donors.csv")
+beneficiaries <- read_csv("Beneficiaries.csv")
+donations <- read_csv("Donations.csv")
+events <- read_csv("Events.csv")
+volunteers <- read_csv("Volunteers.csv")
+event_participation <- read_csv("Event_Participation.csv")
+```
+
+## 🔍 Data Exploration
+
+```{r explore-data, message=FALSE}
+glimpse(donors)
+glimpse(donations)
+glimpse(events)
+```
+
+## 💰 Total Donations by Type
+
+```{r donations-by-type}
+donations %>%
+  group_by(donation_type) %>%
+  summarise(total = sum(amount)) %>%
+  ggplot(aes(x = donation_type, y = total, fill = donation_type)) +
+  geom_col() +
+  labs(title = "Total Donations by Type", x = "Donation Type", y = "Amount") +
+  theme_minimal()
+```
+
+## 🎒 Beneficiaries by Need
+
+```{r beneficiaries-by-need}
+beneficiaries %>%
+  count(needs) %>%
+  ggplot(aes(x = reorder(needs, n), y = n)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  coord_flip() +
+  labs(title = "Beneficiaries by Need", x = "Need", y = "Count") +
+  theme_minimal()
+```
+
+## 🙋 Volunteers per Event
+
+```{r volunteers-per-event}
+event_participation %>%
+  left_join(events, by = "event_id") %>%
+  count(event_name) %>%
+  ggplot(aes(x = reorder(event_name, n), y = n)) +
+  geom_col(fill = "forestgreen") +
+  coord_flip() +
+  labs(title = "Volunteers per Event", x = "Event", y = "Volunteer Count") +
+  theme_minimal()
+```
+
+## 📤 Save a Plot
+
+```{r save-plot, eval=FALSE}
+# Example: Save the Donations by Type chart
+# ggsave("donations_by_type.png", width = 6, height = 4)
+```
+
+## 💡 Summary
+
+This dashboard was built using R and `ggplot2` to visualize a SQL-backed charity database. It provides insights into donations, volunteers, and beneficiaries, and can be used to support decision-making and promote transparency.
+
+---
+
+_This is part of James Junior Baah's Data Analytics portfolio project. Connect with me on [LinkedIn](www.linkedin.com/in/james-kojo-junior-baah-881361336)._
